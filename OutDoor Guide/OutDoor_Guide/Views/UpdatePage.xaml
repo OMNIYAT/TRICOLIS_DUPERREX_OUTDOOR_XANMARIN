@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:langres="clr-namespace:OutDoor_Guide.Resources;asembly=OutDoor_Guide"
+             x:Class="OutDoor_Guide.Views.UpdatePage"
+             Title="OutDoor Guide"
+             >
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" VerticalOptions="End" HorizontalOptions="FillAndExpand" Margin="0,0,0,20">
+
+            <Button Style="{StaticResource buttonStyle}" Margin="15" Text="{x:Static langres:Messages.ConfirmUpdate}" Clicked="Button_Clicked_1"></Button>
+
+            <Button Style="{StaticResource buttonStyle}" Margin="15" Text="{x:Static langres:Messages.Ignore}" Clicked="Button_Clicked"></Button>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

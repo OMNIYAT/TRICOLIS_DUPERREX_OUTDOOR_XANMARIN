@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OutDoor_Guide.Views.LoginPage"
+             xmlns:langres="clr-namespace:OutDoor_Guide.Resources;asembly=OutDoor_Guide"
+             Title="OutDoor Guide"
+             >
+    
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <ScrollView Grid.Row="0" >
+
+                <StackLayout BackgroundColor="BlueViolet" Padding="20,0">
+
+                    <Label Text="{x:Static langres:Messages.Authentication}" FontSize="45" TextColor="White" HorizontalOptions="Center" Margin="0,35,0,0"></Label>
+
+                    <Label Text="{x:Static langres:Messages.Username}" TextColor="White" ></Label>
+                    <Entry x:Name="username" TextColor="White" Text="Alex" ></Entry>
+
+                    <Label Text="{x:Static langres:Messages.Password}" Margin="0,5,0,0" TextColor="White" ></Label>
+                    <Entry x:Name="password" IsPassword="True" Text="1144" TextColor="White" ></Entry>
+
+                </StackLayout>
+            </ScrollView>
+
+            <Button Grid.Row="1" Text="{x:Static langres:Messages.Login}" WidthRequest="150" HeightRequest="70" Clicked="Button_Clicked" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Margin="0,20,0,0" Style="{StaticResource buttonStyle}"></Button>
+
+            <StackLayout Grid.Row="2" Style="{StaticResource BottomBar}">
+                <Label Text="ID: 3123912 | 192.168.0.3" TextColor="White" FontSize="18" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Margin="10,0,0,0"></Label>
+            </StackLayout>
+                
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

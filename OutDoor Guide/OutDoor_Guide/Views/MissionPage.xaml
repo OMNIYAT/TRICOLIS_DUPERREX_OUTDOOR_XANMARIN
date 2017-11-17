@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OutDoor_Guide.Views.MissionPage"
+             xmlns:langres="clr-namespace:OutDoor_Guide.Resources;asembly=OutDoor_Guide"
+             Title="Chargement / Livraison">
+    <ContentPage.Content>
+        <ScrollView>
+            
+        
+            <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" ></RowDefinition>
+                <RowDefinition Height="auto" ></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackLayout  Grid.Row="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="10" Margin="10">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Plan ID" Grid.Row="0" Grid.Column="0" Margin="5,0" VerticalOptions="Center" />
+                    <Entry x:Name="Plan_ID" IsEnabled="False"  HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" />
+
+                    <Label Text="Date" Grid.Row="1" Grid.Column="0" Margin="5,0" VerticalOptions="Center" />
+                    <DatePicker x:Name="Date" HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1" />
+
+                    <Label Text="Aides" Grid.Row="2" Grid.Column="0" Margin="5,0" VerticalOptions="Center" />
+                    <Editor x:Name="Aides" Grid.Row="2" Grid.Column="1" HorizontalOptions="FillAndExpand"  HeightRequest="80" />
+
+                    <Label Text="Instruction" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0" VerticalOptions="Center" />
+                    <Editor x:Name="Instruction" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="150" HorizontalOptions="FillAndExpand"  />
+
+                </Grid>
+
+
+            </StackLayout>
+            
+            <Grid Grid.Row="1" Margin="15,0" >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                
+                
+                <Button Text="{x:Static langres:Messages.MissionBtn1}" Style="{StaticResource buttonStyle}" Grid.Row="0" Grid.Column="0"></Button>
+
+                <Button Text="{x:Static langres:Messages.MissionBtn2}" Style="{StaticResource buttonStyle}" Grid.Row="1" Grid.Column="0"></Button>
+                <Button Text="{x:Static langres:Messages.MissionBtn3}" Style="{StaticResource buttonStyle}" Grid.Row="1" Grid.Column="1"></Button>
+
+                <Button Text="{x:Static langres:Messages.MissionBtn4}" Style="{StaticResource buttonStyle}" Grid.Row="2" Grid.Column="0"></Button>
+                <Button Text="{x:Static langres:Messages.MissionBtn5}" Style="{StaticResource buttonStyle}" Grid.Row="2" Grid.Column="1"></Button>
+            </Grid>
+
+        </Grid>
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

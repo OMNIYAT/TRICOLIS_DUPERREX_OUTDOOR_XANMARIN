@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OutDoor_Guide.Views.DriverPlan"
+             xmlns:langres="clr-namespace:OutDoor_Guide.Resources;asembly=OutDoor_Guide"
+             Title="PLANS : "
+             >
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+        
+            <ListView x:Name="PlanList" Grid.Row="0" ItemSelected="PlanList_ItemSelected" RowHeight="60">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <Grid Style="{StaticResource RowItemGrid}" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding PlanID}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="0" FontSize="18" />
+
+                                <StackLayout Padding="5" Grid.Column="1" BackgroundColor="Gray" >
+                                   <Label Text="{Binding PlanDate}" TextColor="White" VerticalOptions="Center"  FontSize="15" />
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <StackLayout Grid.Row="1"  Style="{StaticResource BottomBar}">
+                <Label Text="ID: 3123912 | 192.168.0.3" TextColor="White" FontSize="18" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Margin="10,0,0,0"></Label>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
