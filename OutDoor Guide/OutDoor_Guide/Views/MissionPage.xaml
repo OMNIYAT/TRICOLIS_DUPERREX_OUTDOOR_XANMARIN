@@ -32,13 +32,13 @@
                     <Entry x:Name="Plan_ID" IsEnabled="False"  HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" />
 
                     <Label Text="Date" Grid.Row="1" Grid.Column="0" Margin="5,0" VerticalOptions="Center" />
-                    <DatePicker x:Name="Date" HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1" />
+                        <DatePicker x:Name="Date" IsEnabled="False" HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1" />
 
                     <Label Text="Aides" Grid.Row="2" Grid.Column="0" Margin="5,0" VerticalOptions="Center" />
-                    <Editor x:Name="Aides" Grid.Row="2" Grid.Column="1" HorizontalOptions="FillAndExpand"  HeightRequest="80" />
+                    <Editor x:Name="Aides" Grid.Row="2" IsEnabled="False" Grid.Column="1" HorizontalOptions="FillAndExpand"  HeightRequest="80" />
 
                     <Label Text="Instruction" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0" VerticalOptions="Center" />
-                    <Editor x:Name="Instruction" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="150" HorizontalOptions="FillAndExpand"  />
+                    <Editor x:Name="Instruction" Grid.Row="4" IsEnabled="False" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="150" HorizontalOptions="FillAndExpand"  />
 
                 </Grid>
 
@@ -64,7 +64,7 @@
                 <Button Text="{x:Static langres:Messages.MissionBtn3}" Style="{StaticResource buttonStyle}" Grid.Row="1" Grid.Column="1"></Button>
 
                 <Button Text="{x:Static langres:Messages.MissionBtn4}" Style="{StaticResource buttonStyle}" Grid.Row="2" Grid.Column="0"></Button>
-                <Button Text="{x:Static langres:Messages.MissionBtn5}" Style="{StaticResource buttonStyle}" Grid.Row="2" Grid.Column="1"></Button>
+                <Button Text="{x:Static langres:Messages.MissionBtn5}" Style="{StaticResource buttonStyle}" Clicked="Depart_Clicked" Grid.Row="2" Grid.Column="1"></Button>
             </Grid>
 
         </Grid>

@@ -20,6 +20,7 @@ namespace OutDoor_Guide
             MainPage = new NavigationPage(new OutDoor_Guide.Views.LoginPage());
         }
 
+        //Create App level Database instance
         public static Database Database
         {
             get
@@ -27,7 +28,8 @@ namespace OutDoor_Guide
                 if (database == null)
                 {
                     database = new Database(DependencyService.Get<IFileHelper>().GetLocalFilePath("OutdoorGuide.db3"));
-                    database.sampleData();
+                    database = new Database("/sdcard/Download/OutdoorGuide.db3");
+                    //database.sampleData();
                 }
                 return database;
             }

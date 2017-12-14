@@ -22,10 +22,10 @@
                                     <ColumnDefinition Width="auto"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Text="{Binding PlanID}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="0" FontSize="18" />
+                                <Label Text="{Binding planid}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="0" FontSize="18" />
 
                                 <StackLayout Padding="5" Grid.Column="1" BackgroundColor="Gray" >
-                                   <Label Text="{Binding PlanDate}" TextColor="White" VerticalOptions="Center"  FontSize="15" />
+                                    <Label Text="{Binding plandate}" TextColor="White" VerticalOptions="Center"  FontSize="15" />
                                 </StackLayout>
                             </Grid>
                         </ViewCell>

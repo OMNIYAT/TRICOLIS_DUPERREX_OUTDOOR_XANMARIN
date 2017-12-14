@@ -18,6 +18,11 @@ namespace OutDoor_Guide.Views
             InitializeComponent();
         }
 
+        /*
+        Login Button event
+        Check given username and password match with database.
+        On successful login redirect to Update Page 
+        */
         private async void Button_Clicked(object sender, EventArgs e)
         {
             try
@@ -38,12 +43,12 @@ namespace OutDoor_Guide.Views
                     List<User> loggedInUser = await App.Database.GetUser(uname, pwd);
                     if (loggedInUser != null && loggedInUser.Count == 1)
                     {
-                        Application.Current.Properties["UserID"] = loggedInUser[0].UserID;
-                        Application.Current.Properties["Login"] = loggedInUser[0].Login;
-                        Application.Current.Properties["RessourceID"] = loggedInUser[0].RessourceID;
+                        Application.Current.Properties["UserID"] = loggedInUser[0].userid;
+                        Application.Current.Properties["Login"] = loggedInUser[0].login;
+                        Application.Current.Properties["RessourceID"] = loggedInUser[0].ressourceid;
 
                         await Navigation.PopAsync();
-                        await Navigation.PushAsync(new UpdatePage());
+                        await Navigation.PushAsync(new DriverPlan());
                     }
                     else
                     {

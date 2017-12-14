@@ -44,7 +44,30 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Communications.cs" />
+    <Compile Include="Model\Controls.cs" />
+    <Compile Include="Model\DeliveryFormModel.cs" />
+    <Compile Include="Model\Frais.cs" />
+    <Compile Include="Model\Ot.cs" />
+    <Compile Include="Model\OtDetail.cs" />
+    <Compile Include="Model\OtDetailOrderLines.cs" />
+    <Compile Include="Model\OtDetailPackageLines.cs" />
+    <Compile Include="Model\OtDetailSat.cs" />
+    <Compile Include="Model\OtOrderLines.cs" />
+    <Compile Include="Model\OtPackages.cs" />
+    <Compile Include="Model\PackageHistorique.cs" />
+    <Compile Include="Model\Payments.cs" />
+    <Compile Include="Model\Periodes.cs" />
     <Compile Include="Model\Plans.cs" />
+    <Compile Include="Model\Produits.cs" />
+    <Compile Include="Model\Ressource.cs" />
+    <Compile Include="Model\TblList.cs" />
+    <Compile Include="Model\TblReclamations.cs" />
+    <Compile Include="Model\TblTlist.cs" />
+    <Compile Include="Model\Transition.cs" />
+    <Compile Include="Model\TransitionEtat.cs" />
+    <Compile Include="Model\TrcPlanCaracteristiques.cs" />
+    <Compile Include="Model\TypeFrais.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Messages.Designer.cs">
@@ -69,6 +92,12 @@
     </Compile>
     <Compile Include="Views\MissionPage.xaml.cs">
       <DependentUpon>MissionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Mission\DeliveryForm.xaml.cs">
+      <DependentUpon>DeliveryForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Mission\FolderServicesPage.xaml.cs">
+      <DependentUpon>FolderServicesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UpdatePage.xaml.cs">
       <DependentUpon>UpdatePage.xaml</DependentUpon>
@@ -159,6 +188,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\InformationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Mission\DeliveryForm.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Mission\FolderServicesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

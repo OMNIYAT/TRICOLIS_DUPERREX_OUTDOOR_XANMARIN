@@ -13,42 +13,42 @@ namespace OutDoor_Guide.Model
 
         public Plans(int id,string pi,int pcaid, int pcid, DateTime pd,double ppt, double pvt,string aides,string tt)
         {
-            this.PlanID = id;
-            this.PlanInstruction = pi;
-            this.PlanCamionID = pcaid;
-            this.PlanChauffeurID = pcid;
-            this.PlanDate = pd;
-            this.PlanSommeRemboursement = 0;
-            this.PlanPoidsTotal = ppt;
-            this.PlanVolumeTotal = pvt;
-            this.PlanChargeMax = 0;
-            this.AIDES = aides;
-            this.Remorque = 0;
-            this.Type_tournees = tt;
-            this.PlanPrepUser = 0;
+            this.planid = id;
+            this.planinstruction = pi;
+            this.plancamionid = pcaid;
+            this.planchauffeurid = pcid;
+            this.plandate = pd;
+            this.plansommeremboursement = 0;
+            this.planpoidstotal = ppt;
+            this.planvolumetotal = pvt;
+            this.planchargemax = 0;
+            this.aides = aides;
+            this.remorque = 0;
+            this.type_tournees = tt;
+            this.planprepuser = 0;
         }
-
+        
         [PrimaryKey, AutoIncrement]
-        public int PlanID { get; set; }
-        public string PlanInstruction { get; set; }
-        public int PlanCamionID { get; set; }
-        public int PlanChauffeurID { get; set; }
-        public DateTime PlanDate { get; set; }
-        public double PlanSommeRemboursement { get; set; }
-        public double PlanSommeValeurTotal { get; set; }
-        public double PlanPoidsTotal { get; set; }
-        public double PlanVolumeTotal { get; set; }
-        public DateTime PlanDateBouclage { get; set; }
-        public DateTime PlanDateAquitement { get; set; }
-        public int PlanChargeMax { get; set; }
-        public int PlanCamionIDProg { get; set;}
-        public string PlanBouclage { get; set; }
-        public int AccessPlan { get; set; }
-        public string CamionCode { get; set; }
-        public string AIDES { get; set; }
-        public int Remorque { get; set; }
-        public string Type_tournees { get; set; }
-        public int PlanPrepUser { get; set; }
+        public int planid { get; set; }
+        public string planinstruction { get; set; }
+        public int plancamionid { get; set; }
+        public int planchauffeurid { get; set; }
+        public DateTime plandate { get; set; }
+        public double plansommeremboursement { get; set; }
+        public double plansommevaleurtotal { get; set; }
+        public double planpoidstotal { get; set; }
+        public double planvolumetotal { get; set; }
+        public DateTime plandatebouclage { get; set; }
+        public DateTime plandateaquitement { get; set; }
+        public int planchargemax { get; set; }
+        public int plancamionidprog { get; set;}
+        public string planbouclage { get; set; }
+        public int accessplan { get; set; }
+        public string camioncode { get; set; }
+        public string aides { get; set; }
+        public int remorque { get; set; }
+        public string type_tournees { get; set; }
+        public int planprepuser { get; set; }
         public string sync { get; set; }
         public string columns { get; set; }
     }

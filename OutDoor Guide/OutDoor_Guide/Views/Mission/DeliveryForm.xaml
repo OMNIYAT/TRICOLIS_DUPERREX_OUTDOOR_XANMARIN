@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OutDoor_Guide.Views.Mission.DeliveryForm"
+             xmlns:langres="clr-namespace:OutDoor_Guide.Resources;asembly=OutDoor_Guide"
+             Title="Livraison">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Text="Liste des OTs" FontSize="Large" Margin="10"></Label>
+
+            <ListView x:Name="List" Grid.Row="1" ItemSelected="List_ItemSelected" RowHeight="60" Margin="0,5"> 
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+
+                            <StackLayout Orientation="Vertical" BackgroundColor="Gray" Padding="10,3"> 
+                                <Label Text="{Binding From}" TextColor="White"></Label>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding otdestinnom}" TextColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></Label>
+                                    <Label Text="{Binding otdestville}" TextColor="White" HorizontalOptions="End" VerticalOptions="Center"></Label>
+                                </StackLayout>
+                            </StackLayout>
+                            
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

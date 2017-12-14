@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OutDoor_Guide.Views.Mission.FolderServicesPage"
+             xmlns:langres="clr-namespace:OutDoor_Guide.Resources;asembly=OutDoor_Guide"
+             Title="Services OT">
+    <ContentPage.Content>
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="7*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0" FontSize="Large" Text="Client"></Label>
+            <Label Grid.Column="0" Grid.Row="1" FontSize="Large" Text="NoBL"></Label>
+            <Label Grid.Column="0" Grid.Row="2" FontSize="Large" Text="OT Note"></Label>
+
+            <StackLayout BackgroundColor="Black" Grid.Column="1" Grid.Row="0" Spacing="0">
+                <StackLayout Margin="1" Spacing="0" BackgroundColor="White">
+                    <Label Text="Client Name" Margin="5,2" FontSize="Large" x:Name="clientName"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout BackgroundColor="Black" Grid.Column="1" Grid.Row="1" Spacing="0">
+                <StackLayout Margin="1" Spacing="0" BackgroundColor="White">
+                    <Label Text="Numbers" Margin="5,2" FontSize="Large" x:Name="clientNumbers"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout BackgroundColor="Black" Grid.Column="1" Grid.Row="2" Spacing="0">
+                <StackLayout Margin="1" Spacing="0" BackgroundColor="White">
+                    <Label Text="Client Note" Margin="5,2" FontSize="Large" x:Name="clientNote"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Orientation="Vertical">
+
+                <Label Text="Prestations" FontSize="Large"></Label>
+
+                <Grid ColumnSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Button Text="Montage" Grid.Row="0" Grid.Column="0" ></Button>
+                    <Button Text="Livraison" Grid.Row="1" Grid.Column="0" ></Button>
+
+                    <Image WidthRequest="64" HeightRequest="64" Source="timer.png" Grid.Row="0" Grid.Column="1" />
+                    <Image WidthRequest="64" HeightRequest="64" Source="pin.png" Grid.Row="0" Grid.Column="2" />
+
+                    <Image WidthRequest="64" HeightRequest="64" Source="timer.png" Grid.Row="1" Grid.Column="1" />
+                    <Image WidthRequest="64" HeightRequest="64" Source="pin.png" Grid.Row="1" Grid.Column="2" />
+
+                </Grid>
+                
+            </StackLayout>
+
+            <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" Text="Traiter" Style="{StaticResource buttonStyle}"></Button>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

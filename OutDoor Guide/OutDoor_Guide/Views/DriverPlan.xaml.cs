@@ -20,29 +20,31 @@ namespace OutDoor_Guide.Views
         {
             InitializeComponent();
             string uname = "";
+            //Get Loggedin user name
             if (Application.Current.Properties.ContainsKey("Login"))
             {
                 uname = Application.Current.Properties["Login"] as string;
             }
             Title = "PLANS : " + uname;
 
-            
+           
             if (Application.Current.Properties.ContainsKey("RessourceID"))
             {
                 resid = (int) Application.Current.Properties["RessourceID"];
             }
 
-
-
             getData();
         }
 
+        //Get Driver Plan
+        //return List of Plan
         private async void getData()
         {
             MyPlans = await App.Database.GetMyPlans(resid);
             PlanList.ItemsSource = MyPlans;
         }
 
+        //
         private void PlanList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             try
@@ -50,7 +52,7 @@ namespace OutDoor_Guide.Views
                 if (e.SelectedItem != null)
                 {
                     Plans p = e.SelectedItem as Plans;
-                    Navigation.PushAsync(new MenuPlan(p.PlanID));
+                    Navigation.PushAsync(new MenuPlan(p.planid));
                     ((ListView)sender).SelectedItem = null;
                 }
             }catch(Exception ex)

@@ -29,20 +29,12 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Text="Type Frais" Grid.Row="0" Grid.Column="0" Margin="5,0" VerticalOptions="Center"></Label>
-                        <Picker Grid.Row="0" Grid.Column="1" x:Name="frais_type">
-                            <Picker.ItemsSource>
-                                <x:Array Type="{x:Type x:String}">
-                                    <x:String>Essence</x:String>
-                                    <x:String>Train</x:String>
-                                    <x:String>Taxi</x:String>
-                                </x:Array>
-                            </Picker.ItemsSource>
-                        </Picker>
+                        <Picker Grid.Row="0" Grid.Column="1" x:Name="frais_type"></Picker>
 
                         <Label Text="Montant" Grid.Row="1" Grid.Column="0" Margin="5,0" VerticalOptions="Center"></Label>
                         <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-                            <Entry x:Name="amount" Placeholder="Amount" HorizontalOptions="FillAndExpand"></Entry>
-                            <Picker x:Name="quote" HorizontalOptions="FillAndExpand">
+                            <Entry x:Name="amount" Placeholder="Amount"  HorizontalOptions="FillAndExpand"></Entry>
+                            <Picker x:Name="quote" HorizontalOptions="FillAndExpand" >
                                 <Picker.ItemsSource>
                                     <x:Array Type="{x:Type x:String}">
                                         <x:String>CHF</x:String>
@@ -56,14 +48,39 @@
                     </Grid>
 
                     <Label Text="Liste Des Frais" Margin="0,5,0,0" FontSize="25"></Label>
-
+                    
+                
                 </StackLayout>
-            
+
+                <ListView x:Name="FList" Grid.Row="1"  RowHeight="60">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell >
+                                <Grid Style="{StaticResource RowItemGrid}" Margin="0,5">
+                                    <Grid.ColumnDefinitions>
+
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Text="{Binding typefrais}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="1" FontSize="18" />
+
+                                    <Label Text="{Binding montantfrais}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="2" FontSize="18" />
+
+                                    <Label Text="{Binding devise}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="3" FontSize="18" />
+                                  
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
                 <StackLayout Grid.Row="2" Style="{StaticResource BottomButtonRow}" Orientation="Horizontal" Spacing="15" >
-                    <Button Text="{x:Static langres:Messages.ButtonAdd}" Style="{StaticResource buttonStyle}"></Button>
+                    <Button Text="{x:Static langres:Messages.ButtonAdd}" Clicked="Add_Clicked" Style="{StaticResource buttonStyle}"></Button>
 
-                    <Button Text="{x:Static langres:Messages.ButtonDelete}" Style="{StaticResource buttonStyle}"></Button>
+                    <Button Text="{x:Static langres:Messages.ButtonDelete}" Clicked="Delete_Clicked" Style="{StaticResource buttonStyle}"></Button>
                 </StackLayout>
 
             </Grid>

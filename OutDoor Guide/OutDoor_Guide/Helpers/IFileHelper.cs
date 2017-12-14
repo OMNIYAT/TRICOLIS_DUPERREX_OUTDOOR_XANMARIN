@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace OutDoor_Guide.Helpers
 {
+    /// <summary>
+    /// Get File path
+    /// </summary>
     public interface IFileHelper
     {
         string GetLocalFilePath(string filename);
