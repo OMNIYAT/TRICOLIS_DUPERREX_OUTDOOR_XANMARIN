@@ -16,7 +16,13 @@ namespace OutDoor_Guide.Views
         private List<PickerModel> hourList;
         private List<PickerModel> minuteList;
         private int planID;
-        
+
+
+        public InformationPage()
+        {
+            InitializeComponent();
+        }
+
         public InformationPage(int planID)
         {
             InitializeComponent();

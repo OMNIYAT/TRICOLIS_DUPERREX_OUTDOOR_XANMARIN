@@ -16,6 +16,11 @@ namespace OutDoor_Guide.Views
     {
         private int planID;
         private Plans Plan;
+        public MissionPage()
+        {
+            InitializeComponent();
+        }
+
         public MissionPage(int planID)
         {
             InitializeComponent();

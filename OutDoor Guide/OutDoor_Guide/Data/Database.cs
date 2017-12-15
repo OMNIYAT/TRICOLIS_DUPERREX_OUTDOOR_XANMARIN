@@ -85,6 +85,20 @@ namespace OutDoor_Guide.Data
             database.InsertOrReplaceAsync(o);
         }
 
+        public async Task DeleteFrais(List<int> delIds)
+        {
+            String ids = string.Join(",", delIds.ToArray());
+            var query = database.Table<Frais>().Where(f => delIds.Contains(f.idfrais));
+            await query.ToListAsync().ContinueWith(async (t) =>
+            {
+                foreach (var temp in t.Result)
+                {
+                    await database.DeleteAsync(temp);
+                }
+            });
+            
+        }
+
         #region User
         /// <summary>
         /// Get users list

@@ -4,13 +4,17 @@
              x:Class="OutDoor_Guide.Views.FraisPage"
              Title="Frais"
              xmlns:langres="clr-namespace:OutDoor_Guide.Resources;asembly=OutDoor_Guide"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
              >
+
+
+    
     <ContentPage.Content>
         <ScrollView  >
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" ></RowDefinition>
-                    <RowDefinition Height="1*" ></RowDefinition>
+                    <RowDefinition Height="*" ></RowDefinition>
                     <RowDefinition Height="auto" ></RowDefinition>
                 </Grid.RowDefinitions>
 
@@ -64,6 +68,14 @@
                                         <ColumnDefinition Width="1*"></ColumnDefinition>
                                         <ColumnDefinition Width="1*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
+
+                                    <controls:CheckBox CheckedText="{Binding idfrais}"
+                                               DefaultText="{Binding idfrais}"
+                                               FontSize="25"
+                                               CheckedChanged="CheckBox_CheckedChanged"
+                                               HorizontalOptions="Start"
+                                               TextColor="#00838f"
+                                               Grid.Column="0"/>
 
                                     <Label Text="{Binding typefrais}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="1" FontSize="18" />
 

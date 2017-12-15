@@ -13,7 +13,12 @@ namespace OutDoor_Guide.Views
     public partial class MenuPlan : ContentPage
     {
         private int planID;
-        
+
+        public MenuPlan()
+        {
+
+        }
+
         public MenuPlan(int planID)
         {
             InitializeComponent();
