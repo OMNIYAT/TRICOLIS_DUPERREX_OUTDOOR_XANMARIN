@@ -7,9 +7,9 @@ using SQLite;
 
 namespace OutDoor_Guide.Model
 {
-    public class OtOrderLines
+    public class Ot_OrderLines
     {
-        public OtOrderLines()
+        public Ot_OrderLines()
         {
 
         }

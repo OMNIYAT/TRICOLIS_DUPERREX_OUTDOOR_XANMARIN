@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OutDoor_Guide.Views.Mission.LivraisonPage"
+             Title="Livraison">
+    <ContentPage.Content>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="0">
+                <Label Text="Package" FontSize="Large" VerticalOptions="Center"></Label>
+                <Entry Placeholder="Search" x:Name="nonScanSearchText" HorizontalOptions="FillAndExpand" Margin="5,0"></Entry>
+                <Entry Placeholder="Search" x:Name="scanSearchText" IsVisible="False" HorizontalOptions="FillAndExpand" Margin="5,0"></Entry>
+                <Button Text="Search" x:Name="nonScanSearch"></Button>
+                <Button Text="Search" x:Name="scanSearch" IsVisible="False"></Button>
+            </StackLayout>
+
+            <ListView x:Name="nonScanList"  Grid.Row="1" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding packagenumber}" VerticalOptions="Center" FontSize="Large" Grid.Column="0"></Label>
+                                <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="Gray" VerticalOptions="FillAndExpand" />
+                                <Label Text="{Binding statut}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" Grid.Column="2"></Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ListView x:Name="scanList" IsVisible="False" Grid.Row="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding packagenumber}" VerticalOptions="Center" FontSize="Large" Grid.Column="0"></Label>
+                                <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="Gray" VerticalOptions="FillAndExpand" />
+                                <Label Text="{Binding statut}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" Grid.Column="2"></Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Text="Verifier" x:Name="verifier" Grid.Row="2" Style="{StaticResource buttonStyle}"></Button>
+            <Button Text="Annuler" x:Name="annuler" HorizontalOptions="End" Grid.Row="2" Style="{StaticResource buttonStyle}"></Button>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="3" Spacing="0">
+                <StackLayout Orientation="Vertical" x:Name="non_scannes" BackgroundColor="White" HorizontalOptions="FillAndExpand">
+                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" x:Name="non_scannes_border" BackgroundColor="White"></BoxView>
+                    <Label Text="Non Scannes" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"></Label>
+                </StackLayout>
+                <BoxView WidthRequest="1" BackgroundColor="Black" />
+                <StackLayout Orientation="Vertical" x:Name="scannes" BackgroundColor="AliceBlue" HorizontalOptions="FillAndExpand">
+                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" x:Name="scannes_border" BackgroundColor="Black"></BoxView>
+                    <Label Text="Scannes" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"></Label>
+                </StackLayout>
+            </StackLayout>
+            
+            <StackLayout Grid.Row="4" Orientation="Horizontal" Spacing="10">
+                <Button  Text="Effectuer" Style="{StaticResource buttonStyle}"></Button>
+                <Button  Text="Reporter" Style="{StaticResource buttonStyle}"></Button>
+                <Button  Text="P.Ammuter" Style="{StaticResource buttonStyle}"></Button>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

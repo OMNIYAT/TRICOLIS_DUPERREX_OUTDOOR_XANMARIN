@@ -12,8 +12,8 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
-                <RowDefinition Height="auto"></RowDefinition>
-                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="70"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
             </Grid.RowDefinitions>
@@ -23,49 +23,56 @@
             <Label Grid.Column="0" Grid.Row="2" FontSize="Large" Text="OT Note"></Label>
 
             <StackLayout BackgroundColor="Black" Grid.Column="1" Grid.Row="0" Spacing="0">
-                <StackLayout Margin="1" Spacing="0" BackgroundColor="White">
+                <StackLayout Margin="1" Spacing="0" BackgroundColor="White" VerticalOptions="FillAndExpand">
                     <Label Text="Client Name" Margin="5,2" FontSize="Large" x:Name="clientName"></Label>
                 </StackLayout>
             </StackLayout>
 
             <StackLayout BackgroundColor="Black" Grid.Column="1" Grid.Row="1" Spacing="0">
-                <StackLayout Margin="1" Spacing="0" BackgroundColor="White">
+                <StackLayout Margin="1" Spacing="0" BackgroundColor="White" VerticalOptions="FillAndExpand">
                     <Label Text="Numbers" Margin="5,2" FontSize="Large" x:Name="clientNumbers"></Label>
                 </StackLayout>
             </StackLayout>
 
             <StackLayout BackgroundColor="Black" Grid.Column="1" Grid.Row="2" Spacing="0">
-                <StackLayout Margin="1" Spacing="0" BackgroundColor="White">
+                <StackLayout Margin="1" Spacing="0" BackgroundColor="White" VerticalOptions="FillAndExpand">
                     <Label Text="Client Note" Margin="5,2" FontSize="Large" x:Name="clientNote"></Label>
                 </StackLayout>
             </StackLayout>
+
+            
 
             <StackLayout Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Orientation="Vertical">
 
                 <Label Text="Prestations" FontSize="Large"></Label>
 
-                <Grid ColumnSpacing="10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="7*"></ColumnDefinition>
-                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
-                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"></RowDefinition>
-                        <RowDefinition Height="auto"></RowDefinition>
-                    </Grid.RowDefinitions>
+                <ListView x:Name="List"  RowHeight="60" ItemSelected="List_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell >
+                                <Grid ColumnSpacing="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="7*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
 
-                    <Button Text="Montage" Grid.Row="0" Grid.Column="0" ></Button>
-                    <Button Text="Livraison" Grid.Row="1" Grid.Column="0" ></Button>
+                                    <Button Text="{Binding produit}" ClassId="{Binding detailid}" Clicked="Button_Clicked" Grid.Row="0" HorizontalOptions="Center" Grid.Column="0" ></Button>
 
-                    <Image WidthRequest="64" HeightRequest="64" Source="timer.png" Grid.Row="0" Grid.Column="1" />
-                    <Image WidthRequest="64" HeightRequest="64" Source="pin.png" Grid.Row="0" Grid.Column="2" />
+                                    <Image WidthRequest="44" HeightRequest="44" Source="timer.png" Grid.Row="0" Grid.Column="1" />
 
-                    <Image WidthRequest="64" HeightRequest="64" Source="timer.png" Grid.Row="1" Grid.Column="1" />
-                    <Image WidthRequest="64" HeightRequest="64" Source="pin.png" Grid.Row="1" Grid.Column="2" />
+                                    <Image WidthRequest="44" HeightRequest="44" Source="{Binding attchimg}" Grid.Row="0" Grid.Column="2" />
 
-                </Grid>
-                
+                                </Grid>
+                               
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
             </StackLayout>
 
             <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" Text="Traiter" Style="{StaticResource buttonStyle}"></Button>

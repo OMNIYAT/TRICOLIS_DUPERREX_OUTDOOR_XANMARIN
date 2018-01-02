@@ -7,9 +7,9 @@ using SQLite;
 
 namespace OutDoor_Guide.Model
 {
-    public class TransitionEtat
+    public class Transition_Etat
     {
-        public TransitionEtat() { }
+        public Transition_Etat() { }
 
         [PrimaryKey, AutoIncrement]
         public int idte { get; set; }

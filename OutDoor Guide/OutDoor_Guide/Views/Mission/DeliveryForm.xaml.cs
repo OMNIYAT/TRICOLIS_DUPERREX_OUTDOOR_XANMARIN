@@ -40,7 +40,8 @@ namespace OutDoor_Guide.Views.Mission
             try{
                 if (e.SelectedItem != null)
                 {
-                    Navigation.PushAsync(new FolderServicesPage());
+                    var res = e.SelectedItem as DeliveryFormModel;
+                    Navigation.PushAsync(new FolderServicesPage(int.Parse(res.otid)));
                     ((ListView)sender).SelectedItem = null;
                 }
             }catch (Exception ex)

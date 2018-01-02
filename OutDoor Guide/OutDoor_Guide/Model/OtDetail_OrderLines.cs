@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace OutDoor_Guide.Model
 {
-    public class OtDetailOrderLines
+    public class OtDetail_OrderLines
     {
-        public OtDetailOrderLines() { }
+        public OtDetail_OrderLines() { }
 
         public int itemid { get; set; }
         public String type { get; set; }

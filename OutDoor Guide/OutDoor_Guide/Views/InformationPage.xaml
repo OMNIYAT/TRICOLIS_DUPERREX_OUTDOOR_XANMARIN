@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="OutDoor_Guide.Views.InformationPage"
              xmlns:langres="clr-namespace:OutDoor_Guide.Resources;asembly=OutDoor_Guide"
+              xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
              Title="Informations">
     <ContentPage.Content>
         <ScrollView >
@@ -67,12 +68,43 @@
 
                 </StackLayout>
 
-            
+                <ListView x:Name="list" Grid.Row="1"  RowHeight="60">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell >
+                                <Grid Style="{StaticResource RowItemGrid}" Margin="0,5">
+                                    <Grid.ColumnDefinitions>
+
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <controls:CheckBox CheckedText="{Binding id}"
+                                               DefaultText="{Binding id}"
+                                               FontSize="25"
+                                               CheckedChanged="CheckBox_CheckedChanged"
+                                               HorizontalOptions="Start"
+                                               TextColor="#00838f"
+                                               Grid.Column="0"/>
+
+                                    <Label Text="{Binding time}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="1" FontSize="18" />
+
+                                    <Label Text="{Binding KM}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="2" FontSize="18" />
+
+                                    <Label Text="{Binding PR}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="3" FontSize="18" />
+
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
                 <StackLayout Grid.Row="2" Style="{StaticResource BottomButtonRow}" Orientation="Horizontal" Spacing="15" >
-                    <Button Text="{x:Static langres:Messages.ButtonAdd}" Style="{StaticResource buttonStyle}"></Button>
+                    <Button Text="{x:Static langres:Messages.ButtonAdd}" Style="{StaticResource buttonStyle}" x:Name="add"></Button>
 
-                    <Button Text="{x:Static langres:Messages.ButtonDelete}" Style="{StaticResource buttonStyle}"></Button>
+                    <Button Text="{x:Static langres:Messages.ButtonDelete}" Style="{StaticResource buttonStyle}" x:Name="delete"></Button>
                 </StackLayout>
 
             </Grid>

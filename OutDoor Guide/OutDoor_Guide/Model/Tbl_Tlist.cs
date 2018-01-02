@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace OutDoor_Guide.Model
 {
-    public class TblTlist
+    public class Tbl_Tlist
     {
-        public TblTlist() { }
+        public Tbl_Tlist() { }
 
         public int id { get; set; }
         public String name { get; set; }

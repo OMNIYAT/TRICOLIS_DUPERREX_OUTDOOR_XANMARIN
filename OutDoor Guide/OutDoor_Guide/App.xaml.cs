@@ -1,5 +1,6 @@
 ﻿using OutDoor_Guide.Data;
 using OutDoor_Guide.Helpers;
+using OutDoor_Guide.Views.Mission;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -17,7 +18,8 @@ namespace OutDoor_Guide
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new OutDoor_Guide.Views.LoginPage());
+            //MainPage = new NavigationPage(new OutDoor_Guide.Views.LoginPage());
+            MainPage = new NavigationPage(new LoadingFormPage());
         }
 
         //Create App level Database instance

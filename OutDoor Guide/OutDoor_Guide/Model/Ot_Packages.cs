@@ -7,9 +7,9 @@ using SQLite;
 
 namespace OutDoor_Guide.Model
 {
-    public class OtPackages
+    public class Ot_Packages
     {
-        public OtPackages()
+        public Ot_Packages()
         {
 
         }

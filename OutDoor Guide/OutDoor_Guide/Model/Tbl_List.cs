@@ -7,9 +7,9 @@ using SQLite;
 
 namespace OutDoor_Guide.Model
 {
-    public class TblList
+    public class Tbl_List
     {
-        public TblList() { }
+        public Tbl_List() { }
         [PrimaryKey, AutoIncrement]
         public int id { get; set; }
         public String name { get; set; }

@@ -12,7 +12,7 @@ namespace OutDoor_Guide.Model
         {
 
         }
-
+        public String otid { get; set; }
         public String otdestinnom { get; set; }
         public String otdestville { get; set; }
         public int otdestnp { get; set; }

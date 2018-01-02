@@ -7,9 +7,9 @@ using SQLite;
 
 namespace OutDoor_Guide.Model
 {
-    public class TrcPlanCaracteristiques
+    public class Trc_Plan_Caracteristiques
     {
-        public TrcPlanCaracteristiques()
+        public Trc_Plan_Caracteristiques()
         {
 
         }
@@ -34,6 +34,27 @@ namespace OutDoor_Guide.Model
         public String pressionpneuavant { get; set; }
         public String sync { get; set; }
         public String columns { get; set; }
+        public String time
+        {
+            get
+            {
+                return kmarrive + " - " + kmdepart;
+            }
+        }
+        public String KM
+        {
+            get
+            {
+                return kmarrive + " - " + kmdepart;
+            }
+        }
+        public String PR
+        {
+            get
+            {
+                return pressionpneuavant+ " - " + pressionpneuapres;
+            }
+        }
 
     }
 }

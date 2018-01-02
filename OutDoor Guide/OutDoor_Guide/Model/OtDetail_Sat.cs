@@ -7,9 +7,9 @@ using SQLite;
 
 namespace OutDoor_Guide.Model
 {
-    public class OtDetailSat
+    public class OtDetail_Sat
     {
-        public OtDetailSat()
+        public OtDetail_Sat()
         {
 
         }

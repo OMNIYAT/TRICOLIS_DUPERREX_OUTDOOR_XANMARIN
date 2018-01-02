@@ -1,4 +1,6 @@
-﻿using OutDoor_Guide.Model;
+﻿using OutDoor_Guide.Helpers;
+using OutDoor_Guide.Model;
+using OutDoor_Guide.Model.Results;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -22,26 +24,25 @@ namespace OutDoor_Guide.Data
             database.CreateTableAsync<Frais>().Wait();
             database.CreateTableAsync<Ot>().Wait();
             database.CreateTableAsync<OtDetail>().Wait();
-            database.CreateTableAsync<OtDetailOrderLines>().Wait();
-            database.CreateTableAsync<OtDetailPackageLines>().Wait();
-            database.CreateTableAsync<OtDetailSat>().Wait();
-            database.CreateTableAsync<OtOrderLines>().Wait();
-            database.CreateTableAsync<OtPackages>().Wait();
+            database.CreateTableAsync<OtDetail_OrderLines>().Wait();
+            database.CreateTableAsync<OtDetail_PackageLines>().Wait();
+            database.CreateTableAsync<OtDetail_Sat>().Wait();
+            database.CreateTableAsync<Ot_OrderLines>().Wait();
+            database.CreateTableAsync<Ot_Packages>().Wait();
             database.CreateTableAsync<PackageHistorique>().Wait();
             database.CreateTableAsync<Payments>().Wait();
             database.CreateTableAsync<Periodes>().Wait();
             database.CreateTableAsync<Produits>().Wait();
             database.CreateTableAsync<Ressource>().Wait();
-            database.CreateTableAsync<TblList>().Wait();
-            database.CreateTableAsync<TblReclamations>().Wait();
-            database.CreateTableAsync<TblTlist>().Wait();
+            database.CreateTableAsync<Tbl_List>().Wait();
+            database.CreateTableAsync<Tbl_Reclamations>().Wait();
+            database.CreateTableAsync<Tbl_Tlist>().Wait();
             database.CreateTableAsync<Transition>().Wait();
-            database.CreateTableAsync<TransitionEtat>().Wait();
-            database.CreateTableAsync<TrcPlanCaracteristiques>().Wait();
+            database.CreateTableAsync<Transition_Etat>().Wait();
+            database.CreateTableAsync<Trc_Plan_Caracteristiques>().Wait();
             database.CreateTableAsync<TypeFrais>().Wait();
         }
 
-        
 
         public void sampleData()
         {
@@ -85,6 +86,38 @@ namespace OutDoor_Guide.Data
             database.InsertOrReplaceAsync(o);
         }
 
+        public Task<List<Trc_Plan_Caracteristiques>> GetInfosByPID(int planID)
+        {
+            return database.QueryAsync<Trc_Plan_Caracteristiques>("select * from [Trc_Plan_Caracteristiques] where planid=?", planID);
+        }
+
+        /// <summary>
+        /// Save info
+        /// </summary>
+        /// <param name="info"></param>
+        /// <returns></returns>
+        public async Task SaveInfo(Trc_Plan_Caracteristiques info)
+        {
+            try
+            {
+                Trc_Plan_Caracteristiques lastItem = await database.Table<Trc_Plan_Caracteristiques>().OrderByDescending(u => u.id).FirstOrDefaultAsync();
+                if (lastItem != null)
+                {
+                    info.id = lastItem.id + 1;
+                }
+                else
+                {
+                    info.id = 1;
+                }
+
+                await database.InsertOrReplaceAsync(info);
+            }
+            catch (Exception e)
+            {
+                var z = 0;
+            }
+        }
+
         public async Task DeleteFrais(List<int> delIds)
         {
             String ids = string.Join(",", delIds.ToArray());
@@ -97,6 +130,19 @@ namespace OutDoor_Guide.Data
                 }
             });
             
+        }
+
+        public async Task DeleteInfos(List<int> delIds)
+        {
+            String ids = string.Join(",", delIds.ToArray());
+            var query = database.Table<Trc_Plan_Caracteristiques>().Where(f => delIds.Contains(f.id));
+            await query.ToListAsync().ContinueWith(async (t) =>
+            {
+                foreach (var temp in t.Result)
+                {
+                    await database.DeleteAsync(temp);
+                }
+            });
         }
 
         #region User
@@ -191,7 +237,7 @@ namespace OutDoor_Guide.Data
         /// <returns></returns>
         public Task<List<DeliveryFormModel>> GetDeliveryFromByPlanID(int pid)
         {
-            return database.QueryAsync<DeliveryFormModel>("SELECT  OT.otdestinnom, OT.otdestville, ot.otdestnp, MIN(periodes.periodeid) as Periode, count(OT.otid) as COUNT, SUM(OT.otetat) as SUM, CASE WHEN Cast(julianday(MIN(periodes.periodeID)) - julianday(min(OT.otdatelivdemande)) as Integer) = 0 THEN min(ot.otdatelivdemande) ELSE null end as [FROM], CASE WHEN Cast(julianday(MIN(periodes.periodeID)) - MAX(ot.tohour) as integer) = 0 THEN max(OT.tohour) ELSE NULL end as [To] from OT INNER join periodes on OT.otid = periodes.periodeOTID where OT.otid <> 1 and periodes.periodeplanid =? group by OT.otdestinnom, OT.otdestville, OT.otdestnp order by periode", pid);
+            return database.QueryAsync<DeliveryFormModel>("SELECT OT.otid, OT.otdestinnom, OT.otdestville, ot.otdestnp, MIN(periodes.periodeid) as Periode, count(OT.otid) as COUNT, SUM(OT.otetat) as SUM, CASE WHEN Cast(julianday(MIN(periodes.periodeID)) - julianday(min(OT.otdatelivdemande)) as Integer) = 0 THEN min(ot.otdatelivdemande) ELSE null end as [FROM], CASE WHEN Cast(julianday(MIN(periodes.periodeID)) - MAX(ot.tohour) as integer) = 0 THEN max(OT.tohour) ELSE NULL end as [To] from OT INNER join periodes on OT.otid = periodes.periodeOTID where OT.otid <> 1 and periodes.periodeplanid =? group by OT.otdestinnom, OT.otdestville, OT.otdestnp order by periode", pid);
         }
 
         /// <summary>
@@ -199,9 +245,9 @@ namespace OutDoor_Guide.Data
         /// </summary>
         /// <param name="otid"></param>
         /// <returns></returns>
-        public Task<List<OtDetail>> GetFolderServiceByOtID(int otid)
+        public Task<List<FolderServiceResult>> GetFolderServiceByOtID(int otid)
         {
-            return database.QueryAsync<OtDetail>("select otdetail.produit, otdetail.hasattachment, otdetail.etat, produits.calculpoid, otdetail.detailid, otdetail.otid from otdetail inner join produits on otdetail.produit = produits.produit where (otdetail.otid in (?)) and(produits.calculpoid >= -1)", otid);
+            return database.QueryAsync<FolderServiceResult>("select otdetail.produit, otdetail.hasattachment, otdetail.etat, produits.calculpoid, otdetail.detailid, otdetail.otid from otdetail inner join produits on otdetail.produit = produits.produit where (otdetail.otid in (?)) and(produits.calculpoid >= -1)", otid);
         }
 
         /// <summary>
@@ -233,6 +279,16 @@ namespace OutDoor_Guide.Data
             return database.QueryAsync<Frais>("select idfrais, typefrais, montantfrais, devise from [frais] where chauffeurid=?", pid);
         }
 
+        public Task<List<Ot>> GetOTByID(int otid)
+        {
+            return database.QueryAsync<Ot>("select * from ot where otid=?", otid);
+        }
+
+        /// <summary>
+        /// Save Frais
+        /// </summary>
+        /// <param name="f"></param>
+        /// <returns></returns>
         public async Task SaveFrais(Frais f)
         {
             try
@@ -254,6 +310,31 @@ namespace OutDoor_Guide.Data
             }
         }
 
+        /// <summary>
+        /// Get Montage page result
+        /// </summary>
+        /// <param name="did"></param>
+        /// <returns></returns>
+        public Task<List<MontageResult>> getMontageResult(double did)
+        {
+            return database.QueryAsync<MontageResult>("select do.itemnumber, do.[description]  from otdetail_orderlines do inner join otdetail d on d.detailid = do.detailid where d.detailid = ?", did);
+        }
 
+        /// <summary>
+        /// Get Livraison Result
+        /// </summary>
+        /// <param name="did"></param>
+        /// <returns></returns>
+        public Task<List<LivraisonResult>> getLivraisonResult(double did)
+        {
+            return database.QueryAsync<LivraisonResult>("select distinct p.packagenumber, p.statut from ot_packages p inner join otdetail_packagelines dp on dp.packageid = p.id inner join otdetail d on d.detailid = dp.serviceid inner join produits pr on pr.produit = d.produit where ( pr.calculpoid = 1 and Cast(p.statut as integer) = 32) or (pr.calculpoid = -1 and Cast(p.statut as integer) = 31) and d.detailid = ?", did);
+        }
+        
+
+        public Task<List<PickerModel>> getCauses()
+        {
+            return database.QueryAsync<PickerModel>("select name as text from tbl_list where listid in (select id from tbl_tlist where name = 'Deviation' )");
+        }
+        
     }
 }

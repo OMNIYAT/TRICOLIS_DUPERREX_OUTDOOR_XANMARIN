@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace OutDoor_Guide.Model
 {
-    public class TblReclamations
+    public class Tbl_Reclamations
     {
-        public TblReclamations()
+        public Tbl_Reclamations()
         {
 
         }

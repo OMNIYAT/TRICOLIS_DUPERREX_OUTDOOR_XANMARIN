@@ -50,15 +50,15 @@ namespace OutDoor_Guide.Views
         {
             if (frais_type.SelectedItem == null)
             {
-                DisplayAlert("Opps", "Select Type Frais", "Ok");
+                await DisplayAlert("Opps", "Select Type Frais", "Ok");
             }
             else if (amount.Text == null || amount.Text.ToString().Trim().Equals(""))
             {
-                DisplayAlert("Opps", "Enter Montant", "Ok");
+                await DisplayAlert("Opps", "Enter Montant", "Ok");
             }
             else if (quote.SelectedItem == null)
             {
-                DisplayAlert("Opps", "Select Quote", "Ok");
+                await DisplayAlert("Opps", "Select Quote", "Ok");
             }
             else
             {

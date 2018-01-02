@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OutDoor_Guide.Views.Mission.CausesPage">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Margin="10" Spacing="10">
+
+            <Label Text="Causes" FontSize="Large"></Label>
+            <Picker x:Name="items"></Picker>
+
+            <Label Text="Remarques" FontSize="Large"></Label>
+            <Editor HeightRequest="150" x:Name="remark" />
+
+            <Button Style="{StaticResource buttonStyle}" Text="Enregistrer" x:Name="add"></Button>
+ 
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
