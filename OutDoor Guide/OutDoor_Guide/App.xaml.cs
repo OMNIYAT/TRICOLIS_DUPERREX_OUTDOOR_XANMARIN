@@ -18,8 +18,8 @@ namespace OutDoor_Guide
         {
             InitializeComponent();
 
-            //MainPage = new NavigationPage(new OutDoor_Guide.Views.LoginPage());
-            MainPage = new NavigationPage(new LoadingFormPage());
+            MainPage = new NavigationPage(new OutDoor_Guide.Views.LoginPage());
+            //MainPage = new NavigationPage(new LoadingFormPage());
         }
 
         //Create App level Database instance

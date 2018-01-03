@@ -30,7 +30,7 @@
             </ScrollView>
 
             <Button Grid.Row="1" Text="{x:Static langres:Messages.Login}" WidthRequest="150" HeightRequest="70" Clicked="Button_Clicked" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Margin="0,20,0,0" Style="{StaticResource buttonStyle}"></Button>
-
+            
             <StackLayout Grid.Row="2" Style="{StaticResource BottomBar}">
                 <Label Text="ID: 3123912 | 192.168.0.3" TextColor="White" FontSize="18" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Margin="10,0,0,0"></Label>
             </StackLayout>

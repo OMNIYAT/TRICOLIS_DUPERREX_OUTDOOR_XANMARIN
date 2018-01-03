@@ -1,4 +1,5 @@
 ﻿using OutDoor_Guide.Model;
+using OutDoor_Guide.WebServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,11 @@ namespace OutDoor_Guide.Views
         {
             try
             {
+                SyncSoapClient serviceClient = new SyncSoapClient();
+                serviceClient.helloCompleted += ServiceClient_helloCompleted;
+                serviceClient.helloAsync();
+
+                /*
                 string uname = username.Text;
                 string pwd = password.Text;
 
@@ -54,13 +60,22 @@ namespace OutDoor_Guide.Views
                     {
                         await DisplayAlert("Error", "Invalid username or password", "OK");
                     }
-                }
+                }*/
             }catch(Exception ex)
             {
                 await DisplayAlert("Error", ex.Message, "OK");
             }
 
 
+        }
+
+        private async void ServiceClient_helloCompleted(object sender, helloCompletedEventArgs e)
+        {
+            try
+            {
+                await DisplayAlert("Service Call", "HI", "OK");
+            }
+            catch (Exception ex) { }
         }
     }
 }
