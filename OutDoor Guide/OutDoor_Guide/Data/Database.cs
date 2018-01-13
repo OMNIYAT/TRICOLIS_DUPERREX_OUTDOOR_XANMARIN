@@ -321,16 +321,62 @@ namespace OutDoor_Guide.Data
         }
 
         /// <summary>
-        /// Get Livraison Result
+        /// Get Livraison Scan Result
         /// </summary>
         /// <param name="did"></param>
+        /// <param name="qry"></param>
         /// <returns></returns>
-        public Task<List<LivraisonResult>> getLivraisonResult(double did)
+        public Task<List<LivraisonResult>> getLivraisonScanResult(double did,String qry)
         {
-            return database.QueryAsync<LivraisonResult>("select distinct p.packagenumber, p.statut from ot_packages p inner join otdetail_packagelines dp on dp.packageid = p.id inner join otdetail d on d.detailid = dp.serviceid inner join produits pr on pr.produit = d.produit where ( pr.calculpoid = 1 and Cast(p.statut as integer) = 32) or (pr.calculpoid = -1 and Cast(p.statut as integer) = 31) and d.detailid = ?", did);
+            return database.QueryAsync<LivraisonResult>("select distinct p.packagenumber, p.statut from ot_packages p inner join otdetail_packagelines dp on dp.packageid = p.id inner join otdetail d on d.detailid = dp.serviceid inner join produits pr on pr.produit = d.produit where (( pr.calculpoid = 1 and Cast(p.statut as integer) = 32) or (pr.calculpoid = -1 and Cast(p.statut as integer) = 31) and d.detailid = ?) and p.packagenumber like '%"+qry+"%' ", did);
         }
-        
 
+        /// <summary>
+        /// Get Livraison NonScan Result
+        /// </summary>
+        /// <param name="did"></param>
+        /// <param name="qry"></param>
+        /// <returns></returns>
+        public Task<List<LivraisonResult>> getLivraisonNonScanResult(double did, String qry)
+        {
+            return database.QueryAsync<LivraisonResult>("select distinct p.packagenumber, p.statut from ot_packages p inner join otdetail_packagelines dp on dp.packageid = p.id inner join otdetail d on d.detailid = dp.serviceid inner join produits pr on pr.produit = d.produit where (( pr.calculpoid = 1 and Cast(p.statut as integer) <> 32) or (pr.calculpoid = -1 and Cast(p.statut as integer) <> 31) and d.detailid = ?) and p.packagenumber like '%" + qry + "%' ", did);
+        }
+
+        /// <summary>
+        /// Get Non Scan Load Form Result
+        /// </summary>
+        /// <param name="did"></param>
+        /// <param name="qry"></param>
+        /// <returns></returns>
+        public Task<List<LoadFormResult>> getNonScanLoadFormResult(int cal, double pid, String qry)
+        {
+            if (cal == -1)
+            {
+                return database.QueryAsync<LoadFormResult>("select packagenumber, OT.otdestinnom, statut, MIN(periodes.periodeid) as Periode from ot_packages inner join OT on ot_packages.otid = OT.otid inner join periodes on ot.otid = periodes.periodeotid where ( statut in ('19','30','47','29')) and periodeplanid=? and ot_packages.id in ( select packageid from otdetail_packagelines  inner join otdetail on otdetail_packagelines.serviceid = otdetail.detailid inner join produits on otdetail.produit = produits.produit and produits.calculpoid=-1 ) and packagenumber like '%" + qry + "%' group by packagenumber, statut, ot.otdestinnom order by Periode", pid);
+            }
+            else
+            {
+                return database.QueryAsync<LoadFormResult>("select packagenumber, OT.otdestinnom, statut, MIN(periodes.periodeid) as Periode from ot_packages inner join OT on ot_packages.otid = OT.otid inner join periodes on ot.otid = periodes.periodeotid where ( statut like '19%' OR statut like '29%' ) and periodeplanid=? and ot_packages.id in ( select packageid from otdetail_packagelines  inner join otdetail on otdetail_packagelines.serviceid = otdetail.detailid inner join produits on otdetail.produit = produits.produit and produits.calculpoid=1 ) and packagenumber like '%"+qry+"%' group by packagenumber, statut, ot.otdestinnom order by Periode", pid);
+            }
+        }
+
+        /// <summary>
+        /// Get Scan Load Form Result
+        /// </summary>
+        /// <param name="did"></param>
+        /// <param name="qry"></param>
+        /// <returns></returns>
+        public Task<List<LoadFormResult>> getScanLoadFormResult(double pid, String qry)
+        {
+            return database.QueryAsync<LoadFormResult>("select p.packagenumber, OT.otdestinnom, p.statut from ot_packages p inner join OT on p.otid = OT.otid where (p.statut=31 OR (p.statut = 29 and p.otid in (select periodeotid from periodes where (periodeplanid=?))) ) and p.packagenumber like '%"+qry+"%'", pid);
+        }
+
+        /*
+         * select packagenumber, OT.otdestinnom, statut, MIN(periodes.periodeid) as Periode
+        from ot_packages
+        inner join OT on ot_packages.otid = OT.otid
+        inner join periodes on ot.otid = periodes.periodeotid
+        */
         public Task<List<PickerModel>> getCauses()
         {
             return database.QueryAsync<PickerModel>("select name as text from tbl_list where listid in (select id from tbl_tlist where name = 'Deviation' )");

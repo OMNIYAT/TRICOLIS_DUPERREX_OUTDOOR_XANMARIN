@@ -48,5 +48,10 @@ namespace OutDoor_Guide.Views
         {
             Navigation.PushAsync(new DeliveryForm(planID));
         }
+
+        private void Chargement_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new LoadingFormPage(planID));
+        }
     }
 }

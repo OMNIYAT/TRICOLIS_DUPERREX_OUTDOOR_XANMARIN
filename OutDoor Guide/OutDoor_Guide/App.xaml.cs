@@ -20,6 +20,7 @@ namespace OutDoor_Guide
 
             MainPage = new NavigationPage(new OutDoor_Guide.Views.LoginPage());
             //MainPage = new NavigationPage(new LoadingFormPage());
+            //MainPage = new NavigationPage(new LivraisonPage(3714396));
         }
 
         //Create App level Database instance

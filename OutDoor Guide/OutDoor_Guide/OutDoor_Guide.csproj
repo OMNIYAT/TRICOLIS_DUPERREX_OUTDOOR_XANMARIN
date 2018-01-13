@@ -65,6 +65,7 @@
     <Compile Include="Model\Ressource.cs" />
     <Compile Include="Model\Results\FolderServiceResult.cs" />
     <Compile Include="Model\Results\LivraisonResult.cs" />
+    <Compile Include="Model\Results\LoadFormResult.cs" />
     <Compile Include="Model\Results\MontageResult.cs" />
     <Compile Include="Model\Tbl_List.cs" />
     <Compile Include="Model\Tbl_Reclamations.cs" />

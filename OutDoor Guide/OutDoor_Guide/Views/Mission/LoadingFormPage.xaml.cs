@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OutDoor_Guide.Model.Results;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,11 +13,39 @@ namespace OutDoor_Guide.Views.Mission
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoadingFormPage : ContentPage
     {
+        private List<LoadFormResult> mNonScanList;
+        private List<LoadFormResult> mScanList;
+        private double pid;
+
         public LoadingFormPage()
         {
             InitializeComponent();
-            setupViews();
         }
+
+        public LoadingFormPage(double pid)
+        {
+            InitializeComponent();
+            this.pid = pid;
+            setupViews();
+            getNonScanData();
+            getScanData();
+        }
+
+
+        private async void getNonScanData()
+        {
+            String qry = nonScanSearchText.Text != null ? nonScanSearchText.Text.ToString() : "";
+            mNonScanList = await App.Database.getNonScanLoadFormResult(1, pid, qry);
+            nonScanList.ItemsSource = mNonScanList;
+        }
+
+        private async void getScanData()
+        {
+            String qry = scanSearchText.Text != null ? scanSearchText.Text.ToString() : "";
+            mScanList = await App.Database.getScanLoadFormResult(pid, qry);
+            scanList.ItemsSource = mScanList;
+        }
+
 
         private void setupViews()
         {
@@ -33,14 +62,21 @@ namespace OutDoor_Guide.Views.Mission
 
         private void ScanTap_Tapped(object sender, EventArgs e)
         {
+            if (scanList.IsVisible == true)
+                return;
             non_scannes.BackgroundColor = Color.AliceBlue;
             non_scannes_border.BackgroundColor = Color.Black;
+
             scannes_border.BackgroundColor = Color.White;
             scannes.BackgroundColor = Color.White;
+
+            toggleViews();
         }
 
         private void NonScanTap_Tapped(object sender, EventArgs e)
         {
+            if (nonScanList.IsVisible == true)
+                return;
             non_scannes.BackgroundColor = Color.White;
             non_scannes_border.BackgroundColor = Color.White;
             

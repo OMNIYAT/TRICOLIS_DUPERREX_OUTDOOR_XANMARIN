@@ -28,11 +28,11 @@ namespace OutDoor_Guide.Views
         {
             try
             {
-                SyncSoapClient serviceClient = new SyncSoapClient();
-                serviceClient.helloCompleted += ServiceClient_helloCompleted;
-                serviceClient.helloAsync();
+                //SyncSoapClient serviceClient = new SyncSoapClient();
+                //serviceClient.helloCompleted += ServiceClient_helloCompleted;
+                //serviceClient.helloAsync();
 
-                /*
+                
                 string uname = username.Text;
                 string pwd = password.Text;
 
@@ -60,7 +60,7 @@ namespace OutDoor_Guide.Views
                     {
                         await DisplayAlert("Error", "Invalid username or password", "OK");
                     }
-                }*/
+                }
             }catch(Exception ex)
             {
                 await DisplayAlert("Error", ex.Message, "OK");

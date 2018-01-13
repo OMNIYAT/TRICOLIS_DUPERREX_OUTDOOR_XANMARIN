@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="OutDoor_Guide.Views.Mission.LoadingFormPage">
+             x:Class="OutDoor_Guide.Views.Mission.LoadingFormPage"
+             Title="Chargement">
     <ContentPage.Content>
-        <Grid>
+        <Grid Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="1*" />
@@ -19,24 +20,79 @@
                 <Button Text="Search" x:Name="scanSearch" IsVisible="False"></Button>
             </StackLayout>
 
-            <ListView x:Name="nonScanList" Grid.Row="1"></ListView>
-            <ListView x:Name="scanList" IsVisible="False" Grid.Row="1"></ListView>
+            <ListView x:Name="nonScanList" Grid.Row="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
 
-            <Button Text="Verifier" x:Name="verifier" Grid.Row="2" Style="{StaticResource buttonStyle}"></Button>
-            <Button Text="Annuler" x:Name="annuler" HorizontalOptions="End" Grid.Row="2" Style="{StaticResource buttonStyle}"></Button>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="1*" />
+                                    <!--<ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="1*" />-->
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding packagenumber}" VerticalOptions="Center" FontSize="Large" Grid.Column="0"></Label>
+                                <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="Gray" VerticalOptions="FillAndExpand" />
+                                <Label Text="{Binding otdestinnom}" VerticalOptions="Center" FontSize="Large" Grid.Column="2"></Label>
+                                <BoxView Grid.Column="3" WidthRequest="1" BackgroundColor="Gray" VerticalOptions="FillAndExpand" />
+                                <Label Text="{Binding statut}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" Grid.Column="4"></Label>
+                                <!--<BoxView Grid.Column="5" WidthRequest="1" BackgroundColor="Gray" VerticalOptions="FillAndExpand"  IsVisible="False"/>
+                                <Label Text="{Binding periode}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" Grid.Column="6" IsVisible="False"></Label>-->
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ListView x:Name="scanList" IsVisible="False" Grid.Row="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
 
-            <StackLayout Orientation="Horizontal" Grid.Row="3" Spacing="0">
-                <StackLayout Orientation="Vertical" x:Name="non_scannes" BackgroundColor="White" HorizontalOptions="FillAndExpand">
-                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" x:Name="non_scannes_border" BackgroundColor="White"></BoxView>
-                    <Label Text="Non Scannes" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"></Label>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="1*" />
+                                    <!--<ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="1*" />-->
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding packagenumber}" VerticalOptions="Center" FontSize="Large" Grid.Column="0"></Label>
+                                <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="Gray" VerticalOptions="FillAndExpand" />
+                                <Label Text="{Binding otdestinnom}" VerticalOptions="Center" FontSize="Large" Grid.Column="2"></Label>
+                                <BoxView Grid.Column="3" WidthRequest="1" BackgroundColor="Gray" VerticalOptions="FillAndExpand" />
+                                <Label Text="{Binding statut}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" Grid.Column="4"></Label>
+                                <!--<BoxView Grid.Column="5" WidthRequest="1" BackgroundColor="Gray" VerticalOptions="FillAndExpand"  IsVisible="False"/>
+                                <Label Text="{Binding periode}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" Grid.Column="6" IsVisible="False"></Label>-->
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Text="Verifier" x:Name="verifier" HorizontalOptions="Start" Grid.Row="2" Style="{StaticResource buttonStyle}"></Button>
+            <Button Text="Annuler" x:Name="annuler" IsVisible="False" HorizontalOptions="End" Grid.Row="2" Style="{StaticResource buttonStyle}"></Button>
+
+            <StackLayout Orientation="Vertical" Grid.Row="3"  Spacing="0">
+                <StackLayout Orientation="Horizontal" Spacing="0">
+                    <StackLayout Orientation="Vertical" x:Name="non_scannes" BackgroundColor="White" HorizontalOptions="FillAndExpand">
+                        <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" x:Name="non_scannes_border" BackgroundColor="White"></BoxView>
+                        <Label Text="Non Scannes" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"></Label>
+                    </StackLayout>
+                    <BoxView WidthRequest="1" BackgroundColor="Black" />
+                    <StackLayout Orientation="Vertical" x:Name="scannes" BackgroundColor="AliceBlue" HorizontalOptions="FillAndExpand">
+                        <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" x:Name="scannes_border" BackgroundColor="Black"></BoxView>
+                        <Label Text="Scannes" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"></Label>
+                    </StackLayout>
                 </StackLayout>
-                <BoxView WidthRequest="1" BackgroundColor="Black" />
-                <StackLayout Orientation="Vertical" x:Name="scannes" BackgroundColor="AliceBlue" HorizontalOptions="FillAndExpand">
-                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" x:Name="scannes_border" BackgroundColor="Black"></BoxView>
-                    <Label Text="Scannes" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"></Label>
-                </StackLayout>
+                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" BackgroundColor="Black"></BoxView>
             </StackLayout>
-            
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

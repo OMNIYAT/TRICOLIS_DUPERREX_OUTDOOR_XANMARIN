@@ -61,25 +61,27 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Button Text="Verifier" x:Name="verifier" Grid.Row="2" Style="{StaticResource buttonStyle}"></Button>
-            <Button Text="Annuler" x:Name="annuler" HorizontalOptions="End" Grid.Row="2" Style="{StaticResource buttonStyle}"></Button>
-
-            <StackLayout Orientation="Horizontal" Grid.Row="3" Spacing="0">
-                <StackLayout Orientation="Vertical" x:Name="non_scannes" BackgroundColor="White" HorizontalOptions="FillAndExpand">
-                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" x:Name="non_scannes_border" BackgroundColor="White"></BoxView>
-                    <Label Text="Non Scannes" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"></Label>
+            <Button Text="Verifier" x:Name="verifier" HorizontalOptions="Start" Grid.Row="2" Style="{StaticResource buttonStyle}"></Button>
+            <Button Text="Annuler" x:Name="annuler" IsVisible="False" HorizontalOptions="End" Grid.Row="2" Style="{StaticResource buttonStyle}"></Button>
+            <StackLayout Orientation="Vertical" Spacing="0" Grid.Row="3">
+                <StackLayout Orientation="Horizontal" Spacing="0">
+                    <StackLayout Orientation="Vertical" x:Name="non_scannes" BackgroundColor="White" HorizontalOptions="FillAndExpand">
+                        <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" x:Name="non_scannes_border" BackgroundColor="White"></BoxView>
+                        <Label Text="Non Scannes" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"></Label>
+                    </StackLayout>
+                    <BoxView WidthRequest="1" BackgroundColor="Black" />
+                    <StackLayout Orientation="Vertical" x:Name="scannes" BackgroundColor="AliceBlue" HorizontalOptions="FillAndExpand">
+                        <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" x:Name="scannes_border" BackgroundColor="Black"></BoxView>
+                        <Label Text="Scannes" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"></Label>
+                    </StackLayout>
                 </StackLayout>
-                <BoxView WidthRequest="1" BackgroundColor="Black" />
-                <StackLayout Orientation="Vertical" x:Name="scannes" BackgroundColor="AliceBlue" HorizontalOptions="FillAndExpand">
-                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" x:Name="scannes_border" BackgroundColor="Black"></BoxView>
-                    <Label Text="Scannes" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"></Label>
-                </StackLayout>
+                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" BackgroundColor="Black"></BoxView>
             </StackLayout>
-            
-            <StackLayout Grid.Row="4" Orientation="Horizontal" Spacing="10">
-                <Button  Text="Effectuer" Style="{StaticResource buttonStyle}"></Button>
-                <Button  Text="Reporter" Style="{StaticResource buttonStyle}"></Button>
-                <Button  Text="P.Ammuter" Style="{StaticResource buttonStyle}"></Button>
+
+            <StackLayout Grid.Row="4" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="10" Margin="0,0,10,0">
+                <Button  Text="Effectuer" x:Name="Effectuer" HorizontalOptions="Center" FontSize="22" Style="{StaticResource buttonStyle}"></Button>
+                <Button  Text="Reporter" x:Name="Reporter" HorizontalOptions="Center" FontSize="22" Style="{StaticResource buttonStyle}"></Button>
+                <Button  Text="P.Ammuter" x:Name="Ammuter" HorizontalOptions="Center" FontSize="22" Style="{StaticResource buttonStyle}"></Button>
             </StackLayout>
         </Grid>
     </ContentPage.Content>

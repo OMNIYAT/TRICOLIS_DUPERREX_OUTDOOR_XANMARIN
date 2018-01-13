@@ -63,7 +63,7 @@
                 <Button Text="{x:Static langres:Messages.MissionBtn2}" Style="{StaticResource buttonStyle}" Grid.Row="1" Grid.Column="0"></Button>
                 <Button Text="{x:Static langres:Messages.MissionBtn3}" Style="{StaticResource buttonStyle}" Grid.Row="1" Grid.Column="1"></Button>
 
-                <Button Text="{x:Static langres:Messages.MissionBtn4}" Style="{StaticResource buttonStyle}" Grid.Row="2" Grid.Column="0"></Button>
+                <Button Text="{x:Static langres:Messages.MissionBtn4}" Style="{StaticResource buttonStyle}" Clicked="Chargement_Clicked" Grid.Row="2" Grid.Column="0"></Button>
                 <Button Text="{x:Static langres:Messages.MissionBtn5}" Style="{StaticResource buttonStyle}" Clicked="Depart_Clicked" Grid.Row="2" Grid.Column="1"></Button>
             </Grid>
 
